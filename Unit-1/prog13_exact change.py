@@ -1,9 +1,10 @@
-bills = [500, 200, 100, 50, 20, 10, 5, 2, 1]
-amount = float(input("enter your amount in INR: "))
-bill_count = [0] * len(bills)
-for i in range (len(bills)):
-    bill_count[i] = amount
-    amount = amount % bills[i]
-for i in range (len(bills)):
-    if bill_count[i] > 0 :
-        print(f"₹{bills[i]}: {bill_count[i]}")
+price = int(input('Enter your Price: '))
+deno1, deno2, deno3 = map(int, input('Denominations: ').split())
+print("Can you form", price, "exactly using", deno1, deno2, deno3, "?")
+for d1 in range(0, 1 + price // deno1):
+    for d2 in range(0, 1 + price // deno2):
+        for d3 in range(0, 1 + price // deno3):
+            if d1 * deno1 + d2 * deno2 + d3 * deno3 == price:
+                print(d1, d2, d3)
+else:
+    print('No') 
